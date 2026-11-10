@@ -687,12 +687,12 @@ async function callAPI(payload, retries = 3) {
             userLat = position.coords.latitude;
             userLon = position.coords.longitude;
             let jarak = hitungJarak(latSekolah, lonSekolah, userLat, userLon);
-            if(jarak <= 150) {
+            if(jarak <= 25) {
               isInRadius = true;
               updateGpsUI('success', `Valid: Anda di area sekolah (${Math.round(jarak)}m).`);
             } else {
               isInRadius = false;
-              updateGpsUI('error', `Di Luar Area! Jarak Anda: ${Math.round(jarak)}m. (Maks: 150m)`);
+              updateGpsUI('error', `Di Luar Area! Jarak Anda: ${Math.round(jarak)}m. (Maks: 25m)`);
             }
             // Sinkronkan jadwal notifikasi setiap kali GPS dicek (saat dashboard dibuka)
             refreshJadwalFromServer();
